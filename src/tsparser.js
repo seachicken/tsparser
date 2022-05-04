@@ -11,7 +11,6 @@ const rl = readline.createInterface({
 rl.on('line', (input) => {
   const program = ts.createProgram([input], { allowJs: true });
   const sourceFile = program.getSourceFile(input);
-  let result = {};
 
   function parse(node) {
     node.start = node.getStart(sourceFile);
@@ -19,7 +18,12 @@ rl.on('line', (input) => {
   }
   ts.forEachChild(sourceFile, parse);
 
-  process.stdout.write(`${JSON.stringify(sourceFile)}\n`);
+  try {
+    process.stdout.write(`${JSON.stringify(sourceFile)}\n`);
+  } catch (error) {
+    process.stdout.write(`\n`);
+    process.stderr.write(`${error}\n`);
+  }
 }).on('close', () => {
   process.exit(0);
 });
