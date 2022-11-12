@@ -1,5 +1,5 @@
 {
-  "name": "tsparser",
+  "name": "@seachicken/tsparser",
   "version": "0.1.0",
   "description": "Get TypeScript ASTs in JSON",
   "bin": {
