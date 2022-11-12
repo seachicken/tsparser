@@ -26,6 +26,7 @@ rl.on('line', (input) => {
   const sourceFile = program.getSourceFile(input);
 
   function parse(node) {
+    node.kindName = ts.SyntaxKind[node.kind];
     node.start = node.getStart(sourceFile);
     ts.forEachChild(node, parse);
   }
