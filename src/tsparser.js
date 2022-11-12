@@ -7,6 +7,7 @@ const rl = readline.createInterface({
   terminal: false
 });
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value
 const getCircularReplacer = () => {
   const seen = new WeakSet();
   return (key, value) => {
